@@ -1,0 +1,64 @@
+<script id="qotDetailsTemplate" type="text/html">
+<!--
+Description: QOT page. User is already logged in.
+src: registrationWF/qot.html
+-->
+<div id='qotDetails' class="qot">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Infrastructure Details</h4>
+      </div>
+      <div class="modal-body">
+      	<ul>
+      		<li>ID: <%=model.toJSON().id%></li>
+      	<li>Owner Name: <%=model.toJSON().owner.name%></li>
+      	<li>Owner Email: <%=model.toJSON().owner.email%></li>
+      	<li>Agree to Legal Compliance: <%=model.toJSON().legalCompliance%></li>
+      	<li>Agree to Operational Compliance: <%=model.toJSON().operationalCompliance%></li>
+      	<li>Agree to Technical Compliance: <%=model.toJSON().operationalCompliance%></li>
+      	<li>Desired Node Type: <%=model.toJSON().nodeType%></li>	
+      	<li>Organization Contact: 
+      		<ul>
+      			<li>Name: <%=model.toJSON().organization.name%></li>
+      			<li>Country: <%=model.toJSON().organization.country%></li>
+      			<li>Email: <%=model.toJSON().organization.email%></li>
+      			<li>Fax: <%=model.toJSON().organization.fax%></li>
+      			<li>Phone: <%=model.toJSON().organization.phone%></li>
+      			<li>Address: <%=model.toJSON().organization.location%></li>
+      		</ul>
+      	</li>
+      		<li>Management Contact: 
+      		<ul>
+      			<li>Name: <%=model.toJSON().management.name%></li>
+      			<li>Country: <%=model.toJSON().management.country%></li>
+      			<li>Email: <%=model.toJSON().management.email%></li>
+      			<li>Fax: <%=model.toJSON().management.fax%></li>
+      			<li>Phone: <%=model.toJSON().management.phone%></li>
+      			<li>Address: <%=model.toJSON().management.location%></li>
+      		</ul>
+      	</li>
+      	<li>Support Contact: 
+      		<ul>
+      			<li>Name: <%=model.toJSON().support.name%></li>
+      			<li>Country: <%=model.toJSON().support.country%></li>
+      			<li>Email: <%=model.toJSON().support.email%></li>
+      			<li>Fax: <%=model.toJSON().support.fax%></li>
+      			<li>Phone: <%=model.toJSON().support.phone%></li>
+      			<li>Address: <%=model.toJSON().support.location%></li>
+      		</ul>
+      	</li>
+      	</ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+
+</div>
+
+
+</script>

@@ -1,0 +1,38 @@
+<script id="qotRegistrationsTemplate" type="text/html">
+<!--
+Description: QOT page. User is already logged in.
+src: registrationWF/qot.html
+-->
+<div id='qotRegistrations' class="qot">
+<h3>Waiting for Approval</h3>
+<table
+<thead>
+	<th>Infrastructure ID</th>
+	<th>Owner</th>
+	<th>Details</th>
+	<th>Approve</th>
+</thead>
+<tbody class="table table-without-margins without-borders table-striped table-scrolled ov">
+<%
+	for (var registrationModelidx in models){
+		%>
+			<tr>
+				<td> <%=models[registrationModelidx].id%>
+				</td>
+				<td>
+					<%=
+					models[registrationModelidx].attributes.owner.name%>
+				</td>
+				<td><button class="btn btn-primary qotDetails" data-toggle="modal" data-target="#myModal">
+				 show more...</button></td>
+				<td><button   rel="tooltip" class="tab-right right btn btn-primary approve">Approve</button></td>
+			</tr>
+		<%
+	}
+%>
+</tbody>
+</table>
+</div>
+
+
+</script>

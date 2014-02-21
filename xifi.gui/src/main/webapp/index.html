@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>XIFI Portal</title>
+
+		
+		<link href='css/lib/bootstrap.css' media='screen' rel='stylesheet' />
+		<link href='css/lib/bootstrap-responsive.css' media='screen' rel='stylesheet' />
+		
+		<!-- FIWARE CSS -->
+		<link href='css/old/style.css' media='screen' rel='stylesheet' />
+		<link href='css/old/application.css' media='screen' rel='stylesheet' />
+		<link href='css/style2.css' media='screen' rel='stylesheet' />
+		
+		<script type="text/javascript" src="lib/require.js"></script>
+		<script type="text/javascript" src="lib/underscore.js"></script>
+
+		<script type="text/javascript" src="lib/jquery-1.7.1.min.js"></script>
+		 <script type="text/javascript" src="lib/backbone.js"></script>
+		<script type="text/javascript" src="lib/backbone-localstorage.js"></script> 
+		<script type="text/javascript" src="lib/bootstrap.min.js"></script>
+		<script>
+			function loadTemplates(urls, callback) {
+				var total = urls.length;
+				var amount = 0;
+				for (var index in urls) {
+					var url = urls[index];
+
+					$.ajax({
+						url : url + "?random=" + Math.random() * 99999,
+						asynx : false, // synchonous call in case code tries to use template before it's loaded
+						success : function(response) {
+							$('head').append(response);
+							amount++;
+							if (amount == total) {
+								callback();
+							}
+						}
+					});
+				}
+			}
+
+
+			$(document).ready(function() {
+				$('.bar').css({
+					width : "0%"
+				});
+				loadTemplates(['templates/auth/login.html', 
+				'templates/root/root.html',
+				'templates/root/navTab.html',
+				'templates/root/topBar.html',
+				'templates/root/user.html',
+				'templates/root/sideBar.html',
+				'templates/root/settings.html',
+				'templates/registrationWF/qot.html',
+				'templates/registrationWF/legalCompliance.html',
+				'templates/registrationWF/technicalCompliance.html',
+				'templates/registrationWF/operationalCompliance.html',
+				'templates/registrationWF/contact.html',
+				'templates/registrationWF/qot_end.html',
+				'templates/registrationWF/startSetupInf.html',
+				'templates/registrationWF/testInstallation.html',
+				'templates/auth/register.html',
+				'templates/admin/newRegistrations.html',
+				'templates/admin/qotRegistrations.html',
+				'templates/admin/qotDetailsTemplate.html',
+				'templates/admin/installationTestResultsTemplate.html',
+				'templates/admin/remoteTestTemplate.html',
+				'templates/admin/remoteTestDetailsTemplate.html'],
+				 function() {
+					$('.bar').css({
+						width : "30%"
+					});
+					console.log("Templates loaded.");
+					console.log($("#createKeyPairFormTemplate"));
+					require(["js/libs.js"], function() {
+						$('.bar').css({
+							width : "50%"
+						});
+						require(["lib/jquery.qtip.min.js"], function() {
+							require(["js/models.js"], function() {
+								$('.bar').css({
+									width : "70%"
+								});
+								
+								require(["js/views.js"], function() {
+									$('.bar').css({
+										width : "90%"
+									});
+									
+									require(["js/routes.js"], function() {
+										$('.bar').css({
+											width : "100%"
+										});
+										
+										$('#initbar').hide();
+										host = document.URL.match(/((http|file).?:\/\/[^\/]*)\/.*/)[1];
+										
+										var fiRouter = new OSRouter();
+										
+										Backbone.history.start();
+									})
+								})
+							})
+						})
+					})
+				});
+			});
+
+		</script>
+	</head>
+	<body id="splash" >
+		<header id="main-nav" class="navbar">
+			<nav class="navbar-inner">
+
+				<div class="logo-header">
+					<a href="localhost:80" class="logo-header"> <img alt="XIFI" class="logo" src="images/XIFI-LOGO.png"> </a>
+
+				</div>
+
+
+				<ul class="oil-portal hidden-phone">
+					<li class="cloud">
+						<a href="https://cloud.lab.fi-ware.eu/"> Cloud </a>
+					</li>
+					<li class="store">
+						<a href="https://store.lab.fi-ware.eu/"> Store </a>
+					</li>
+					<li class="mashup">
+						<a href="https://mashup.lab.fi-ware.eu/"> Mashup </a>
+					</li>
+					<li class="idm">
+						<a href="https://account.lab.fi-ware.eu/"> Account </a>
+					</li>
+					<li class="help">
+						<a href="http://lab.fi-ware.eu/"> Help&info </a>
+					</li>
+					<li class="federation active">
+						<a href="/"> Federation </a>
+					</li>
+				</ul>
+
+			</nav>
+		</header>
+		<div class="container">
+			<div id='auth'></div>
+
+			<div id='root'></div>
+			
+			<div id="register"></div>
+		</div>
+		<div id="initbar" class="progress progress-striped active">
+			Loading XIFI Portal...
+			<div class="bar2" style="width: 100%;"></div>
+			<div class="bar" style="width: 0%;"></div>
+		</div>
+	</body>
+</html>

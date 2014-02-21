@@ -1,0 +1,338 @@
+<script id="contactTemplate" type="text/html">
+	
+	<div id="carousel-contact" class="inner carousel slide" style="display: block;">
+	<h2>Contact</h2>
+	<h6>Complete the contact form below:</h6>
+	<div id="contactForm" class="carousel-inner">
+	<div class="item active">
+	<div class="inner familyfont">
+	<h4> Organisation Contact Details</h4>
+	<form action="#" method="post" id="organizationForm">
+	<h6>Please enter your details for your organisation:</h6>
+	<br class="clear"><br class="clear">
+	<div id="accordion2" class="accordion accordion-group">
+	<div class="accordion-heading">
+	<a data-toggle="collapse" data-parent="#accordion2" href="#collapseMiden" class="accordion-heading-a accordion-toggle">Contact Information</a>
+
+	</div>
+	<div id="collapseMiden" class="accordion-body collapse">
+	<div class="accordion-inner">
+	<div class="control-group familyfont">
+	<label for="#InputOrgName">Name</label>
+	<div class="controls tab-left"><input value="" placeholder="Name" type="text" class="input-custom name">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	<div class="control-group familyfont">
+	<label for="InputCountry">Country Prefix</label>
+	<div class="controls tab-left">
+	<input value="" type="text" placeholder="Country Prefix" name="countrypre" class="input-custom countrypre">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	<div class="control-group familyfont">
+	<label for="InputFax">Fax</label>
+	<div class="controls tab-left">
+	<input value="" type="text" placeholder="Fax" name="fax" class="input-custom fax">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	<div class="control-group familyfont">
+	<label for="InputPhone">Phone</label>
+	<div class="controls tab-left">
+	<input value="" type="text" placeholder="Phone" name="phone" class="input-custom phone">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	<div class="control-group familyfont">
+	<label for="InputEmail">Email</label>
+	<div class="controls tab-left">
+	<input value="" type="text" placeholder="Email" name="emailadd" class="input-custom emailadd">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	<br class="clear">
+	</div>
+	</div>
+	</div>
+	<div id="accordion2" class="accordion accordion-group">
+	<div class="accordion-heading">
+	<a data-toggle="collapse" data-parent="#accordion2" href="#collapseMLocal" class="accordion-heading-a accordion-toggle">Location Information</a>
+	</div>
+	<div id="collapseMLocal" class="accordion-body collapse">
+	<div class="accordion-inner">
+	<div class="form-group">
+	<div class="control-group familyfont"><label for="InputAddress1">Address 1</label>
+	<div class="controls tab-left"><input value="" type="text" placeholder="Address 1" required="required" class="input-custom address">
+	<span id="nameWarning" class="help-inline p" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress1">Address 2</label>
+	<div class="controls tab-left"><input value="" type="text" placeholder="Address 2" required="required" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress3">Address 3</label>
+	<div class="controls tab-left"><input value="" type="text" placeholder="Address 3" required="required" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress4">Address 4</label>
+	<div class="controls tab-left"><input value="" type="text" placeholder="Address 4" required="required" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</form>
+	<br class="clear"><br class="clear"><br class="clear">
+	<h4>Node Type Selection</h4>
+	<h6>Please enter your node tier:</h6>
+	<div id="nodeaccordion" class="accordion accordion-group">
+	<div class="accordion-heading">
+	<a data-toggle="collapse" data-parent="#nodeaccordion" href="#collapseNode" class="accordion-heading-a accordion-heading-a accordion-toggle">Node Type</a>
+	</div>
+	<div id="collapseNode" class="accordion-body collapse">
+	<div class="accordion-inner">
+	<div class="form-group">
+	<div class="checkbox tab-left">
+	<label class="familyfont">
+	<input id="checkMaster" type="checkbox" name="checkMaster" class="tab-left">Master Node
+	</label>
+	</div>
+	<div class="checkbox tab-left">
+	<label class="familyfont">
+	<input id="checkSlave" type="checkbox" name="checkSlave" class="tab-left">Slave Node
+	</label>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<br class="clear"><br class="clear"><br class="clear">
+	<h4>Management Contact Details</h4>
+	<form action="" id="managementForm" method="post">
+	<h6>Please enter your details for your management</h6>
+	<br class="clear"><br class="clear">
+	<div id="managementaccordion" class="accordion accordion-group">
+	<div class="accordion-heading">
+	<a data-toggle="collapse" data-parent="#managementaccordion" href="#collapseManagementName" class="accordion-heading-a accordion-heading-a accordion-toggle">Contact Information</a>
+	</div>
+	<div id="collapseManagementName" class="accordion-body collapse">
+	<div class="accordion-inner">
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputName" class="familyfont">Name</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Name" name="Name" class="input-custom name">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputCountry">Country Prefix</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Country Prefix" name="countrypre" class="input-custom countrypre">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress4">Fax</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Fax" name="fax" class="input-custom fax">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputPhone">Phone</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Phone" name="phone" class="input-custom phone">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputEmail">Email</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Email" name="emailadd" class="input-custom emailadd">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div id="managementaccordion" class="accordion accordion-group">
+	<div class="accordion-heading">
+	<a data-toggle="collapse" data-parent="#managementaccordion" href="#collapseManagementlocation" class="accordion-heading-a accordion-toggle">Location Information</a>
+	</div>
+	<div id="collapseManagementlocation" class="accordion-body collapse">
+	<div class="accordion-inner">
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress1">Address 1</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Address 1" name="address1" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value										</span></div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress2">Address 2</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Address 2" name="address2" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress3">Address 3</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Address 3" name="address3" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress4">Address 4</label>
+	<div class="controls tab-left"><input type="text" placeholder="Address 4" name="address4" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</form>
+	<br class="clear"><br class="clear"><br class="clear">
+	<h4>Support Contact Form</h4>
+	<form id="supportForm" action="" method="post">
+	<h6>Please enter your details for your support team</h6>
+	<br class="clear"><br class="clear">
+	<div id="supportaccordion" class="accordion accordion-group">
+	<div class="accordion-heading">
+	<a data-toggle="collapse" data-parent="#supportaccordion" href="#collapsesupportname" class="accordion-heading-a accordion-heading-a accordion-toggle">Contact Information</a>
+	</div>
+	<div id="collapsesupportname" class="accordion-body collapse"><div class="accordion-inner"><div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputName">Name</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Name" name="Name" class="input-custom name">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputCountry">Country Prefix</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Country Prefix" name="countrypre" class="input-custom countrypre">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group"><div class="control-group familyfont">
+	<label for="InputAddress4">Fax</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Fax" name="fax" class="input-custom fax">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputPhone">Phone</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Phone" name="phone" class="input-custom phone">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputEmail">Email</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Email" name="emailadd" class="input-custom emailadd">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div id="supportaccordion" class="accordion accordion-group">
+	<div class="accordion-heading">
+	<a data-toggle="collapse" data-parent="#supportaccordion" href="#collapsesuppoerlocation" class="accordion-heading-a accordion-toggle">Location Information</a>
+	</div>
+	<div id="collapsesuppoerlocation" class="accordion-body collapse">
+	<div class="accordion-inner">
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress1">Address 1</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Address 1" name="address1" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress2">Address 2</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Address 2" name="address2" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress3">Address 3</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Address 3" name="address3" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="control-group familyfont">
+	<label for="InputAddress4">Address 4</label>
+	<div class="controls tab-left">
+	<input type="text" placeholder="Address 4" name="address4" class="input-custom address">
+	<span id="nameWarning" class="help-inline" style="display: none;">Please enter a value</span>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</form><br class="clear"><br class="clear"><br class="clear">
+	<div id="endSurvey" class="a tab-right right btn btn-primary">Continue &amp; Submit</div>
+	<div id="validSupForm" type="submit" class="a">
+
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+
+	
+</script>
