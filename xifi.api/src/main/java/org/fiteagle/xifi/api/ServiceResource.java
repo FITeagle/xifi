@@ -22,8 +22,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import org.fiteagle.api.IService;
 import org.fiteagle.api.IServiceDAO;
+import org.fiteagle.api.Service;
 import org.fiteagle.xifi.api.annotation.PATCH;
 
 @Stateless
@@ -37,9 +37,9 @@ public class ServiceResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces("application/hal+json")
-	public Response addService(@Context UriInfo uriInfo, IService service) throws URISyntaxException{
+	public Response addService(@Context UriInfo uriInfo, Service service) throws URISyntaxException{
 		LOGGER.log(Level.INFO, "Received add service request");
-		IService created = serviceDao.createService(service);
+		Service created = serviceDao.createService(service);
 		
 		created.addLinksWithId(uriInfo.getAbsolutePath().toString());
 		
@@ -51,13 +51,13 @@ public class ServiceResource {
 	@GET
 	@Produces("application/hal+json")
 	public Response getAllServices(@Context UriInfo uriInfo,@QueryParam("type") String type,@QueryParam("page") String page, @QueryParam("per_page")String per_page) {
-		List<? extends IService> services = serviceDao.findServices(type);
+		List<? extends Service> services = serviceDao.findServices(type);
 			
 	
-		for(IService s : services){
+		for(Service s : services){
 			s.addLinksWithId(uriInfo.getAbsolutePath().toString());
 		}
-		GenericEntity<List<? extends IService>> entity = new GenericEntity<List<? extends IService>>(services){};
+		GenericEntity<List<? extends Service>> entity = new GenericEntity<List<? extends Service>>(services){};
 		return Response.ok(entity).build();
 	}
 
@@ -66,7 +66,7 @@ public class ServiceResource {
 	@Produces("application/hal+json")
 	@Path("/{serviceid}")
 	public Response getService(@Context UriInfo uriInfo, @PathParam("serviceid")long serviceid) {
-		IService s = serviceDao.findService(serviceid);
+		Service s = serviceDao.findService(serviceid);
 		if(s == null)
 			return Response.status(404).build();
 		s.addLinksWithoutId(uriInfo.getAbsolutePath().toString());
@@ -77,9 +77,9 @@ public class ServiceResource {
 	@Produces("application/hal+json")
 	@Path("/{serviceid}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateService(@Context UriInfo uriInfo, @PathParam("serviceid") long serviceId, IService service) {
+	public Response updateService(@Context UriInfo uriInfo, @PathParam("serviceid") long serviceId, Service service) {
 		service.setId(serviceId);
-		IService updated = serviceDao.updateService(service);
+		Service updated = serviceDao.updateService(service);
 		updated.addLinksWithoutId(uriInfo.getAbsolutePath().toString());
 	
 		return Response.created(uriInfo.getAbsolutePath()).entity(updated).build();

@@ -21,7 +21,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import org.fiteagle.api.IEndpoint;
+import org.fiteagle.api.Endpoint;
 import org.fiteagle.api.IEndpointDAO;
 import org.fiteagle.xifi.api.annotation.PATCH;
 
@@ -35,22 +35,22 @@ public class EndpointResource {
 	@GET
 	@Produces("application/hal+json")
 	public Response findEndpoints(@Context UriInfo uriInfo, @QueryParam("service_id") String serviceId, @QueryParam("region")String regionId, @QueryParam("interface") String interfaceType, @QueryParam("page") String page, @QueryParam("per_page") String per_page){
-		List<? extends IEndpoint> endpoints = endPointDAO.findEndpoints(serviceId, regionId, interfaceType);
+		List<? extends Endpoint> endpoints = endPointDAO.findEndpoints(serviceId, regionId, interfaceType);
 		
-		for(IEndpoint e: endpoints){
+		for(Endpoint e: endpoints){
 			e.addLink("self", uriInfo.getAbsolutePath().toString()+ "/" + e.getId());
 		}
 		
-		GenericEntity<List<? extends IEndpoint>> entity = new GenericEntity<List<? extends IEndpoint>>(endpoints){};
+		GenericEntity<List<? extends Endpoint>> entity = new GenericEntity<List<? extends Endpoint>>(endpoints){};
 		return Response.ok(entity).build();
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces("application/hal+json")
-	public Response addEndpoint(@Context UriInfo uriInfo, IEndpoint endpoint) throws URISyntaxException{
+	public Response addEndpoint(@Context UriInfo uriInfo, Endpoint endpoint) throws URISyntaxException{
 		
-		IEndpoint created = endPointDAO.addEndpoint(endpoint);
+		Endpoint created = endPointDAO.addEndpoint(endpoint);
 		created.addLink("self", uriInfo.getAbsolutePath().toString()+ "/" + created.getId());
 		Response res = Response.created(new URI(uriInfo.getAbsolutePath().toString()+ "/" + created.getId())).entity(created).build();
 		return res;
@@ -60,7 +60,7 @@ public class EndpointResource {
 	@Path("/{endpointid}")
 	@Produces("application/hal+json")
 	public Response getEndpoint(@Context UriInfo uriInfo, @PathParam("endpointid") long endpointId){
-		IEndpoint endpoint = endPointDAO.findEndpoint(endpointId);
+		Endpoint endpoint = endPointDAO.findEndpoint(endpointId);
 		if(endpoint == null)
 			return Response.status(404).build();
 		endpoint.addLink("self", uriInfo.getAbsolutePath().toString());
@@ -72,8 +72,8 @@ public class EndpointResource {
 	@Path("/{endpointid}")
 	@Produces("application/hal+json")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateEndpoint(@Context UriInfo uriInfo, @PathParam("endpointid") long endpointId, IEndpoint endpoint) throws URISyntaxException{
-		IEndpoint updated = endPointDAO.updateEndpoint(endpointId,endpoint);
+	public Response updateEndpoint(@Context UriInfo uriInfo, @PathParam("endpointid") long endpointId, Endpoint endpoint) throws URISyntaxException{
+		Endpoint updated = endPointDAO.updateEndpoint(endpointId,endpoint);
 		updated.addLink("self", uriInfo.getAbsolutePath().toString());
 		Response res = Response.created(new URI(uriInfo.getAbsolutePath().toString())).entity(updated).build();
 		return res;

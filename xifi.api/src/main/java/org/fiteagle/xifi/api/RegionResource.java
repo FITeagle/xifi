@@ -22,10 +22,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import org.fiteagle.api.IContactInformation;
-import org.fiteagle.api.IRegion;
+import org.fiteagle.api.ContactInformation;
 import org.fiteagle.api.IRegionDAO;
-import org.fiteagle.api.IRegionStatus;
+import org.fiteagle.api.Region;
+import org.fiteagle.api.RegionStatus;
 import org.fiteagle.xifi.api.annotation.PATCH;
 
 
@@ -44,7 +44,7 @@ public class RegionResource {
 		LOGGER.log(Level.INFO, "getting JSON for region " + regionid);
 	
 		
-		IRegion newRegion = regionDao.findRegion(regionid);
+		Region newRegion = regionDao.findRegion(regionid);
 		if(newRegion == null)
 			return Response.status(404).build();
 		
@@ -58,10 +58,10 @@ public class RegionResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces("application/hal+json")
-	public Response postRegionInfo(@Context UriInfo uriInfo,IRegion region) throws URISyntaxException {
+	public Response postRegionInfo(@Context UriInfo uriInfo,Region region) throws URISyntaxException {
 		LOGGER.log(Level.INFO, "Received post request ");
 		
-		IRegion newRegion = regionDao.createRegion(region);
+		Region newRegion = regionDao.createRegion(region);
 		newRegion.addLinksWithId(uriInfo.getAbsolutePath().toString());
 		return Response.created(new URI(uriInfo.getAbsolutePath().toString() + "/" + newRegion.getId())).entity(newRegion).build();
 		
@@ -72,7 +72,7 @@ public class RegionResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces("application/hal+json")
 	@Path("/{regionid}")
-	public Response updateRegion(@Context UriInfo uriInfo,@PathParam("regionid") long id, IRegion r) throws URISyntaxException {
+	public Response updateRegion(@Context UriInfo uriInfo,@PathParam("regionid") long id, Region r) throws URISyntaxException {
 		LOGGER.log(Level.INFO, "Received patch request ");
 		Response res;
 		if((r.getId() != 0 && id != r.getId())){
@@ -80,7 +80,7 @@ public class RegionResource {
 		}else{
 			if(r.getId() == 0)
 				r.setId(id);
-		IRegion newRegion = regionDao.updateRegion(r);
+		Region newRegion = regionDao.updateRegion(r);
 		if(newRegion == null){
 			return Response.status(404).build();
 		}
@@ -103,13 +103,13 @@ public class RegionResource {
 	@Produces("application/hal+json")
 	public Response getAllRegions(@Context UriInfo uriInfo,@QueryParam("country") String country, @QueryParam("page")String page, @QueryParam("per_page") String per_page) {
 		LOGGER.log(Level.INFO, "Received find All Regions");
-		List<? extends IRegion> regions	 = regionDao.findRegions(country);
+		List<? extends Region> regions	 = regionDao.findRegions(country);
 		
-		for(IRegion r: regions){
+		for(Region r: regions){
 			r.addLinksWithId(uriInfo.getAbsolutePath().toString());
 
 		}
-		GenericEntity<List<? extends IRegion>> entity = new GenericEntity<List<? extends IRegion>>(regions){};
+		GenericEntity<List<? extends Region>> entity = new GenericEntity<List<? extends Region>>(regions){};
 		return Response.ok(entity).build();
 		
 	}
@@ -119,7 +119,7 @@ public class RegionResource {
 	@Produces("application/hal+json")
 	public Response getRegionStatus(@Context UriInfo uriInfo,@PathParam("regionid") long regionid){
 		LOGGER.log(Level.INFO, "Received status request for Region : "+ regionid);
-		IRegionStatus regionStatus = regionDao.findRegionStatusForId(regionid);
+		RegionStatus regionStatus = regionDao.findRegionStatusForId(regionid);
 		if(regionStatus == null)
 			return Response.status(404).build();
 		regionStatus.addLinksWithoutId(uriInfo.getAbsolutePath().toString());
@@ -131,10 +131,10 @@ public class RegionResource {
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/{regionid}/status")
-	public Response updateRegionStatus(@Context UriInfo uriInfo,@PathParam("regionid") long regionid, IRegionStatus status){
+	public Response updateRegionStatus(@Context UriInfo uriInfo,@PathParam("regionid") long regionid, RegionStatus status){
 		LOGGER.log(Level.INFO, "Received region status update for region : "+ regionid);
 		status.setRegion(regionid);
-		IRegionStatus newRegionStatus = regionDao.updateRegionStatus(status);
+		RegionStatus newRegionStatus = regionDao.updateRegionStatus(status);
 		if(newRegionStatus == null)
 			return Response.status(404).build();
 		newRegionStatus.addLinksWithoutId(uriInfo.getAbsolutePath().toString());
@@ -148,11 +148,11 @@ public class RegionResource {
 	@Produces("application/hal+json")
 	public Response getRegionContacts(@Context UriInfo uriInfo,@PathParam("regionid") long regionid, @QueryParam("type") String type){
 		LOGGER.log(Level.INFO, "Received contacts request for region: "+ regionid);
-		List<? extends IContactInformation> contacts = regionDao.getContacts(regionid, type);
-		for(IContactInformation c: contacts){
+		List<? extends ContactInformation> contacts = regionDao.getContacts(regionid, type);
+		for(ContactInformation c: contacts){
 			c.addLinksWithId(uriInfo.getAbsolutePath().toString());
 		}
-		GenericEntity<List<? extends IContactInformation>> entity = new GenericEntity<List<? extends IContactInformation>>(contacts){};
+		GenericEntity<List<? extends ContactInformation>> entity = new GenericEntity<List<? extends ContactInformation>>(contacts){};
 		return Response.ok(entity).build();
 	}
 
@@ -162,10 +162,10 @@ public class RegionResource {
 	@Path("/{regionid}/contacts")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces("application/hal+json")
-	public Response addContactInformation(@Context UriInfo uriInfo, @PathParam("regionid") long regionid, IContactInformation contactInfo) throws URISyntaxException {
+	public Response addContactInformation(@Context UriInfo uriInfo, @PathParam("regionid") long regionid, ContactInformation contactInfo) throws URISyntaxException {
 		Response res = null;
 		
-		IContactInformation newContact = regionDao.addContactInforamtion(regionid, contactInfo );
+		ContactInformation newContact = regionDao.addContactInforamtion(regionid, contactInfo );
 		newContact.addLinksWithId(uriInfo.getAbsolutePath().toString());
 		res = Response.created(new URI(uriInfo.getAbsolutePath().toString()+ "/"+  newContact.getId())).entity(newContact).build();
 		return res;
@@ -181,7 +181,7 @@ public class RegionResource {
 	@Produces("application/hal+json")
 	public Response getContactInfo(@Context UriInfo uriInfo,  @PathParam("regionid") long regionid, @PathParam("contactid") long contactId) throws URISyntaxException{
 		
-		IContactInformation contactInfo = regionDao.getContactInfo(contactId);
+		ContactInformation contactInfo = regionDao.getContactInfo(contactId);
 		contactInfo.addLinksWithoutId(uriInfo.getAbsolutePath().toString());
 		return Response.ok(contactInfo).build();
 
@@ -191,8 +191,8 @@ public class RegionResource {
 	@Path("/{regionid}/contacts/{contactid}")
 	@Produces("application/hal+json")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateContactInformation(@Context UriInfo uriInfo,  @PathParam("regionid") long regionid, @PathParam("contactid") long contactId, IContactInformation updated) throws URISyntaxException{
-		IContactInformation updatedContact =  regionDao.updateContactInformation(contactId, updated);
+	public Response updateContactInformation(@Context UriInfo uriInfo,  @PathParam("regionid") long regionid, @PathParam("contactid") long contactId, ContactInformation updated) throws URISyntaxException{
+		ContactInformation updatedContact =  regionDao.updateContactInformation(contactId, updated);
 		updatedContact.addLinksWithId(uriInfo.getAbsolutePath().toString());
 		return Response.created(new URI(uriInfo.getAbsolutePath().toString())).entity(updatedContact).build();
 	}
