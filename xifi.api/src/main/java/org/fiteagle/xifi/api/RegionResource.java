@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -34,9 +37,15 @@ import org.fiteagle.xifi.api.annotation.PATCH;
 @Path("/regions")
 public class RegionResource {
 	private static final Logger LOGGER = Logger.getLogger(RegionResource.class.getName());
-	@EJB(beanInterface=IRegionDAO.class, mappedName="IRegionDAO")
+	//@EJB(beanInterface=IRegionDAO.class, mappedName="IRegionDAO")
 	IRegionDAO regionDao;
 	
+	@PostConstruct
+	private void init() throws NamingException{
+		LOGGER.log(Level.INFO, "init method");
+		regionDao = (IRegionDAO) new InitialContext().lookup("java:jboss/exported/regionManagement-0.0.1-SNAPSHOT/RegionDAO!org.fiteagle.api.IRegionDAO");
+
+	}
 	@GET
 	@Path("/{regionid}")
 	@Produces("application/hal+json")
@@ -130,6 +139,7 @@ public class RegionResource {
 
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces("application/hal+json")
 	@Path("/{regionid}/status")
 	public Response updateRegionStatus(@Context UriInfo uriInfo,@PathParam("regionid") long regionid, RegionStatus status){
 		LOGGER.log(Level.INFO, "Received region status update for region : "+ regionid);
@@ -193,7 +203,7 @@ public class RegionResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response updateContactInformation(@Context UriInfo uriInfo,  @PathParam("regionid") long regionid, @PathParam("contactid") long contactId, ContactInformation updated) throws URISyntaxException{
 		ContactInformation updatedContact =  regionDao.updateContactInformation(contactId, updated);
-		updatedContact.addLinksWithId(uriInfo.getAbsolutePath().toString());
+		updatedContact.addLinksWithoutId(uriInfo.getAbsolutePath().toString());
 		return Response.created(new URI(uriInfo.getAbsolutePath().toString())).entity(updatedContact).build();
 	}
 

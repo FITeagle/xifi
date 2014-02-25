@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -30,9 +33,19 @@ import org.fiteagle.xifi.api.annotation.PATCH;
 @Path("/services")
 public class ServiceResource {
 	private static final Logger LOGGER = Logger.getLogger(ServiceResource.class.getName());
-
-	@EJB(beanInterface=IServiceDAO.class,mappedName="IServiceDAO")
 	IServiceDAO serviceDao;
+	@PostConstruct
+	private void init(){
+		
+		try {
+			serviceDao = (IServiceDAO) new InitialContext().lookup("java:jboss/exported/regionManagement-0.0.1-SNAPSHOT/ServiceDAO!org.fiteagle.api.IServiceDAO");
+		} catch (NamingException e) {
+			LOGGER.log(Level.INFO, e.getMessage());
+		}
+	
+		
+	}
+	
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

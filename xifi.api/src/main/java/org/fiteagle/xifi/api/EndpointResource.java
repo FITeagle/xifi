@@ -5,8 +5,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -29,9 +32,17 @@ import org.fiteagle.xifi.api.annotation.PATCH;
 @Path("/endpoints")
 public class EndpointResource {
 
-	@EJB(beanInterface=IEndpointDAO.class, mappedName="IEndpointDAO")
-	IEndpointDAO endPointDAO;
 	
+	IEndpointDAO endPointDAO;
+	@PostConstruct
+	private void init(){
+		try {
+			endPointDAO = (IEndpointDAO) new InitialContext().lookup("java:jboss/exported/regionManagement-0.0.1-SNAPSHOT/EndpointDAO!org.fiteagle.api.IEndpointDAO");
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	@GET
 	@Produces("application/hal+json")
 	public Response findEndpoints(@Context UriInfo uriInfo, @QueryParam("service_id") String serviceId, @QueryParam("region")String regionId, @QueryParam("interface") String interfaceType, @QueryParam("page") String page, @QueryParam("per_page") String per_page){
