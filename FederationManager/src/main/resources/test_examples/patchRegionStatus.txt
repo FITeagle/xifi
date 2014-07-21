@@ -1,0 +1,7 @@
+{
+		"timestamp": 12345,
+		"status":"active",
+		 "legalCompliance" : true,
+		 "operationalCompliance" : true,
+		 "technicalCompliance": true
+	}

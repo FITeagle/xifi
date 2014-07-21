@@ -1,0 +1,435 @@
+@import "main";
+
+// IDM header bar
+
+a:hover{
+  color: #049cdb;
+  text-decoration: none;
+}
+header#oil-nav {
+  display: block;
+  background-color: #f4f4f4;
+  padding: 1px 10px 1px;
+  border-bottom: 1px solid #F2F2F2;
+  -moz-box-shadow: 0px 1px 8px rgba(50, 51, 51, 0.15);
+  -webkit-box-shadow: 0px 1px 8px rgba(50, 51, 51, 0.15);
+  box-shadow: 0px 1px 8px rgba(50, 51, 51, 0.15);
+  position: fixed;
+  width: 96%;
+  height: 35px;
+  padding: 1px 2% 1px;
+  z-index: 1039;
+  nav.navbar-inner {
+    padding: 0;
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    height: 40px;
+    .nav-user {
+      height: 40px;
+      li {
+        &:hover {
+          background-color: inherit;
+        }
+      }
+    }
+    .logo-header{
+      display: inline;
+      img {
+        width: 60px;
+        padding-top: 0;
+        float: left;
+        margin-top: 0px;
+      }
+      .brand {
+        padding: 0;
+        width: auto;
+        float: left;
+        margin: 12px 0 0 3px;
+        font-size: 23px;
+        color: #555;
+        font-family: "NeoTechRegular";
+        display: inline-block;
+        text-shadow: 0 1px 0 #fff;
+
+        #logo-fi {
+          color: #0b2c65;
+        }
+
+        #logo-ware {
+          color: #5DC1D3;
+        }
+
+        a{
+          font-size: 34px;
+          color: #555;
+
+          &:hover{
+            text-decoration: none;
+
+            span{
+              font-size: 17px;
+              color: #888;
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  .mobile {
+    display: none;
+
+    .dropdown-menu{
+      margin-left: -67px;
+    }
+
+    ul.dropdown-menu{
+      margin-left: -67px;
+      min-width: 90px;
+      background-color: rgb(244, 244, 244);
+      border: none;
+      -webkit-border-top-left-radius: 0px;
+      -moz-border-top-left-radius: 0px;
+      border-top-left-radius: 0px;
+      -webkit-border-top-right-radius: 0px;
+      -moz-border-top-right-radius: 0px;
+      border-top-right-radius: 0px;
+      -webkit-box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+      -moz-box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+      margin-top: 0px;
+    }
+
+
+    ul li {
+      a:hover{
+        background-color: rgb(65, 173, 218);
+      }
+      &.active a{
+        background-color: #049cdb;
+        background-image: none;
+      }
+
+      &.active a:hover{
+        background-color: rgb(65, 173, 218);
+        background-image: none;
+      }
+
+      &.active a:focus{
+        background-color: #049cdb;
+        background-image: none;
+      }
+    }
+  }
+
+  ul.oil-portal{
+  //  width: 360px;
+  //  height: 36px;
+  //  padding: 0px 14px;
+  //  margin-bottom: 0px;
+  //  display: inline-block;
+  //  float: left;
+  //  margin: 0 0 10px 25px;
+  margin: 0 0 10px 25px;
+  line-height: 21px;
+  font-size: 13px;
+  width: 465px;
+  height: 36px;
+  padding: 0px;
+  margin-bottom: 0px;
+  margin-left: 2px;
+  font-family: "OpenSansRegular";
+  display: inline-block;
+  li{
+    display: inline-block;
+    padding: 14px 18px 9px;
+
+    &:hover {
+      background-color: rgba(152, 152, 152, 0.1);
+      height: 14px;
+      color: #049cdb;
+    }
+
+    a{
+      color: #555;
+    //  font-family: "OpensansRegular";
+      &:hover{
+        color: #049cdb;
+      }
+
+      &.active{
+        background-color: #fcfcfc;
+        height: 14px;
+        -moz-box-shadow: 0px 0px 0px 0px #FCFCFC;
+        -webkit-box-shadow: 0px 0px 0px 0px #FCFCFC;
+        box-shadow: 0px 0px 0px 0px #FCFCFC;
+        #height: 18px;
+        #-moz-box-shadow: 0px 9px 0px -1px #FCFCFC;
+        #-webkit-box-shadow: 0px 9px 0px -1px #FCFCFC;
+        #box-shadow: 0px 9px 0px -1px #FCFCFC;
+        a {
+          color: #049cdb;
+        }
+      }
+    }
+  }
+  }
+
+
+}
+
+ul.oil-portal li.active {
+  background-color: #fcfcfc;
+  height: 18px;
+  -moz-box-shadow: 0px 9px 0px -1px #FCFCFC;
+  -webkit-box-shadow: 0px 9px 0px -1px #FCFCFC;
+  box-shadow: 0px 9px 0px -1px #FCFCFC;
+}
+
+@media (max-width: 767px){
+
+  #oil-nav  header .navbar ul.nav{
+    margin-top: 0px;
+  }
+
+  #oil-nav  .logo-header{
+    float: left;
+  }
+
+  #oil-nav  .mobile{
+    float: left;
+    margin-top: 8px;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px){
+
+  #oil-nav  header.navbar ul{
+    margin-top: 0px
+  }
+}
+
+#oil-nav  .dropdown-submenu a:hover{
+  color: #fff;
+  background-color: #049cdb;
+  background-image: none;
+}
+
+#oil-nav  .dropdown-submenu a:focus{
+  color: #fff;
+  background-color: #049cdb;
+  background-image: none;
+}
+
+#oil-nav  .dropdown-submenu a:active{
+  color: #fff;
+  background-color: #049cdb;
+  background-image: none;
+}
+
+#oil-nav  .dropdown-submenu .active a{
+  background-color: #049cdb;
+}
+
+#oil-nav  .dropdown-submenu .active a:focus{
+  background-color: #049cdb;
+}
+
+#oil-nav  .dropdown-submenu li a:hover{
+  color: #fff;
+  background-color: #049cdb;
+  background-image: none;
+}
+
+#oil-nav  .dropdown-submenu li a:focus{
+  color: #fff;
+  background-color: #049cdb;
+  background-image: none;
+}
+
+#oil-nav  .dropdown-submenu li a:active{
+  color: #fff;
+  background-color: #049cdb;
+  background-image: none;
+}
+
+#oil-nav  ul.nav li a img{
+  width: 24px;
+}
+
+#oil-nav  ul.nav li a span{
+  box-shadow: none
+}
+
+#oil-nav  ul.nav li.dropdown.open>.dropdown-toggle, #oil-nav .navbar .nav li.dropdown.active>.dropdown-toggle, #oil-nav .navbar .nav li.dropdown.open.active>.dropdown-toggle {
+  background-color: transparent !important;
+}
+
+#oil-nav  .dropdown-menu>li>a:hover, #oil-nav .dropdown-menu>li>a:focus, #oil-nav .dropdown-submenu:hover>a, #oil-nav .dropdown-submenu:focus>a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: #049cdb;
+  background-image: none !important;
+}
+
+#oil-nav  li.dropdown a{
+  padding: 10px 6px !important;
+}
+#oil-nav  .dropdown-menu .divider {
+  height: 1px;
+  margin: 4px;
+}
+#oil-nav  .dropdown-menu{
+  margin-top: -7px;
+  -webkit-border: 1px solid rgba(0,0,0,0.1);
+  -moz-border: 1px solid rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.1);
+  -webkit-box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+  -moz-box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+  box-shadow: 2px 3px 6px rgba(0,0,0,0.1);
+}
+
+#oil-nav  ul.nav span.name{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  font-family: "OpensansRegular";
+  font-size: 14px;
+  line-height: 20px;
+  color: #777;
+  list-style: none;
+}
+#oil-nav  ul.nav li a{
+  padding: 10px 0 10px 10px !important;
+  background-color: transparent;
+  font-family: "OpensansRegular";
+  text-shadow: none;
+  font-size: 14px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: #333;
+  white-space: nowrap;
+}
+
+/**************MENU TOOLBAR 20PX*************/
+
+[class="arrow-down-"], [class*="arrow-down-"] {
+  width: 25px;
+  height: 25px;
+  background-image: url("/images/header/arrow-down.png");
+  display: inline-block;
+  vertical-align: text-top;
+  background-repeat: no-repeat;
+  *margin-right: .3em;
+}
+
+#oil-nav .arrow-down-settings { background-position: -1px -35px; }
+
+#oil-nav .arrow-down-settings:hover { background-position: -1px -5px; }
+
+
+// ----> Idm Header Bar
+
+
+
+.topbar {
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+
+  margin-top: 0;
+  margin-left: -25px;
+  margin-bottom: 0px;
+  margin-right: -25px;
+
+  .switcher_bar {
+    display: inline-block;
+    height: auto;
+    width: 160px;
+    background-position: 140px center;
+    margin-bottom: 0;
+    font-size: 11px;
+    padding: 0;
+    a {
+      padding: 2px 10px 1px;
+      margin-left: 0;
+      display: block;
+    }
+    ul {
+      width: 130px;
+    }
+
+  }
+
+  .page-header {
+    margin-top: 45px;
+  }
+
+  .logo {
+    position: absolute;
+    margin-left: 0px !important;
+    float: left;
+    top: 0px;
+    margin-top: 15px;
+
+    .brand {
+        background: url(../images/header/header-logo.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 60px;
+        display: block;
+        float: left;
+        height: 61px;
+        width: 65px;
+    }
+
+    h2 {
+      padding: 0px;
+      margin-bottom: 0px;
+    }
+
+    .link-logo{
+      color: #000;
+      text-decoration: none;
+      font-family: DsignesRegular;
+      font-size: 24px;
+    }
+
+    .dashboard{
+      text-shadow: 1px 0px 1px
+      rgba(255, 255, 255, 0.10);
+      font-size: 13px;
+      padding: 0px;
+      margin: 0px;
+    }
+
+
+  }
+
+}
+
+#user_info {
+    position: absolute;
+    right: 0px;
+    color: #888;
+    margin-top: 7px;
+    margin-right: 5px;
+    & > a {
+      font-size: 11px !important;
+    }
+
+    #user_info_name {
+      display: inline-block;
+      vertical-align: middle;
+      float: left;
+      line-height: 29px;
+      margin-right: 25px;
+    }
+}
