@@ -1,0 +1,34 @@
+<script id="editRegionTemplate" type="text/html">
+    <div id="editRegion">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4> Edit Region </h4>
+                </div>
+                <div class="modal-body">
+                    <label class="modal-label" for="regionName">Name:</label>
+                    <input type="text" id="regionName" value="<%=model.toJSON().id%>"/>
+                    <label class="modal-label"for="regionOwner">Owner ID:</label>
+                    <input type="text" id="regionOwner" value="<%=model.toJSON().adminUsername%>"/>
+                    <% if(admin) { %>
+                    <label class="modal-label" for="nodeType">Node Type:</label>
+                    <select id="nodeType" >
+                        <option value="master" <%if (model.toJSON().nodeType=='master') { %> selected <%} %> >Master</option>
+                        <option value="slave" <%if (model.toJSON().nodeType=='slave') { %> selected <%} %>>Slave</option>
+                    </select>
+                    <% }%>
+                    <label class="modal-label" for="regionLat">Latitude:</label>
+                    <input type="text" id="regionLat" value="<%=model.toJSON().latitude%>"/>
+                    <label class="modal-label" for="regionLong">Longitude:</label>
+                    <input type="text" id="regionLong" value="<%=model.toJSON().longitude%>"/>
+                    <label class="modal-label" for="regionCountry">Country:</label>
+                    <input type="text" id="regionCountry" value="<%=model.toJSON().country%>"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-blue editRegion" data-dismiss="modal">Submit</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</script>

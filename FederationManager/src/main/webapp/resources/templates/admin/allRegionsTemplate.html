@@ -1,0 +1,283 @@
+<script id="allRegionsTemplate" type="text/html">
+
+    <div id="allRegions">
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#publicRegions" data-toggle="tab">Public Regions</a></li>
+            <li><a href="#privateRegions" data-toggle="tab">Private Regions</a></li>
+            <li><a href="#services" data-toggle="tab">Services</a></li>
+
+        </ul>
+        <div class="tab-content">
+        <div class="tab-pane active" id="publicRegions">
+            <div class="table_actions clearfix">
+                <a href="" class="btn btn-mini  btn-blue btn_action  addNewInf " data-i18n="Add new Infrastructure" data-toggle="modal" data-target="#myModal">Add Infrastructure</a>
+            </div>
+        <div class="table_container">
+         <table id="table_head" class="table table-bordered table-striped table-header table-head">
+             <thead>
+                 <tr>
+                     <td>Infrastructure ID</td>
+                     <td>Owner</td>
+                     <td>Status</td>
+                 </tr>
+             </thead>
+          </table>
+            <div class="scrollable">
+          <div class="vp">
+            <table id="table_entries" class="table table-without-margins without-borders table-striped table-scrolled ov">
+                <tbody>
+                <%
+                for (var idx = 0; idx < model.length; idx++){
+                var region = model.at(idx);
+                %>
+
+                <tr id="<%region.toJSON().id%>" data-toggle="collapse" data-target=".<%=region.toJSON().id%>" class="accordion-toggle">
+                    <td colspan="3"> <%=region.toJSON().id%>
+                    </td>
+                    <td colspan="3">
+                        <%=region.toJSON().adminUsername%>
+                    </td>
+                    <td colspan="3">
+                        <%=region.regionStatus.get('status')%>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="hiddenRow">
+                        <div class="accordion-body <%=region.toJSON().id%> collapse">
+                            <p>Location:</p>
+                            <ul>
+                                <li class="editable"> Latitude: <%=region.get('latitude')%></li>
+                                <li class="editField" data-id="<%=region.toJSON().id%>" style="display: none"> <input type="text"  value="<%=region.get('latitude')%>" ></li>
+                                <li> Longitude: <%=region.get('longitude')%></li>
+                                <li> Country: <%=region.get('country')%></li>
+                            </ul>
+                        </div>
+                    </td>
+
+                    <td colspan="1" class="hiddenRow">
+                        <div class="accordion-body <%=region.toJSON().id%> collapse"><p>Contacts:</p>
+                        <ul>
+                            <li>
+                                <button class="btn-mini btn-basic addContact " data-id="<%=region.toJSON().id%>" >Management</button>
+                            </li>
+                            <li>
+                                <button class="btn-mini btn-basic addContact " data-id="<%=region.toJSON().id%>" >Support</button>
+                            </li>
+                            <li>
+                                <button class="btn-mini btn-basic addContact " data-id="<%=region.toJSON().id%>" >Organization.js</button>
+                            </li>
+
+                        </ul></div>
+                    </td>
+                    <td colspan="3" class="hiddenRow">
+                        <div class="accordion-body <%=region.toJSON().id%> collapse"><p>Services:</p>
+                            <ul>
+
+
+
+                            <%  var endpoints = region.get('endpoints');
+                           for(var edx = 0; edx < endpoints.length; edx++) {   %>
+                            <li><%=endpoints[edx].toJSON().name%>: <%=endpoints[edx].toJSON().url%> </li>
+
+                            <%}%>
+
+                            </ul>
+                        </div>
+                    </td>
+                    <td colspan="3" class="hiddenRow">
+                        <div class="accordion-body <%=region.toJSON().id%> collapse">
+                            <div>Actions: <br>
+                                <ul>
+                                    <li>
+                                        <button class="btn-mini btn-basic addEndpoint " data-id="<%=region.toJSON().id%>" data-toggle="modal" data-target="#myModal">Add Service</button>
+
+                                    </li>
+                                    <li>
+                                        <button class="btn-mini btn-success editRegion " data-id="<%=region.toJSON().id%>"data-toggle="modal" data-target="#myModal">Edit Region</button>
+                                    </li>
+                                    <li>
+
+                                        <button class="btn-mini btn-danger deleteRegion" data-id="<%=region.toJSON().id%>">Delete Region</button>
+                                    </li>
+                                    <li>
+
+                                        <button class="btn-mini btn-blue changeStatus" data-id="<%=region.toJSON().id%>"  data-toggle="modal" data-target="#myModal">Edit Status</button>
+                                    </li>
+                                </ul>
+
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <%
+                }
+                %>
+                </tbody>
+            </table>
+          </div>
+          </div>
+         </div>
+    </div>
+            <div class="tab-pane" id="privateRegions">
+                <div class="table_actions clearfix">
+                    <a href="" class="btn btn-mini  btn-blue btn_action " style="display: none">Add Infrastructure</a>
+                </div>
+                <div class="table_container">
+
+                    <table id="table_head2" class="table table-bordered table-striped table-header table-head">
+                        <thead>
+                        <tr>
+                            <td>Infrastructure ID</td>
+                            <td>Owner</td>
+                            <td>Status</td>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div class="scrollable">
+                        <div class="vp">
+                            <table id="table_entries2" class="table table-without-margins without-borders table-striped table-scrolled ov">
+                                <tbody>
+                                <%
+                                for (var idx = 0; idx < privateRegions.length; idx++){
+                                var privateRegion = privateRegions.at(idx);
+                                %>
+
+                                <tr id="<%privateRegion.toJSON().id%>" data-toggle="collapse" data-target=".<%=privateRegion.toJSON().id%>" class="accordion-toggle">
+                                    <td colspan="3"> <%=privateRegion.toJSON().id%>
+                                    </td>
+                                    <td colspan="3">
+                                        <%=privateRegion.toJSON().adminUsername%>
+                                    </td>
+                                    <td colspan="3">
+                                        <%=privateRegion.regionStatus.get('status')%>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="hiddenRow">
+                                        <div class="accordion-body <%=privateRegion.toJSON().id%> collapse">
+                                            <p>Location:</p>
+                                            <ul>
+                                                <li > Latitude: <%=privateRegion.get('latitude')%></li>
+                                                <li  data-id="<%=privateRegion.toJSON().id%>" style="display: none"> <input type="text"  value="<%=privateRegion.get('latitude')%>" ></li>
+                                                <li> Longitude: <%=privateRegion.get('longitude')%></li>
+                                                <li> Country: <%=privateRegion.get('country')%></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+
+                                    <td colspan="1" class="hiddenRow">
+                                        <div class="accordion-body <%=privateRegion.toJSON().id%> collapse">
+                                            <p>Contacts:</p>
+                                            <ul>
+                                                <li>
+                                                    <button class="btn-mini btn-basic addContact " data-id="<%=privateRegion.toJSON().id%>" >Management</button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn-mini btn-basic addContact " data-id="<%=privateRegion.toJSON().id%>">Support</button>
+                                                </li>
+                                                <li>
+                                                    <button class="btn-mini btn-basic addContact " data-id="<%=privateRegion.toJSON().id%>" >Organization.js</button>
+                                                </li>
+
+                                            </ul></div>
+                                    </td>
+                                    <td colspan="3" class="hiddenRow">
+                                        <div class="accordion-body <%=privateRegion.toJSON().id%> collapse">
+                                            <p>Services:</p>
+                                            <ul>
+
+
+
+                                                <%  var endpoints2 = privateRegion.get('endpoints');
+                                                for(var edx = 0; edx < endpoints2.length; edx++) {   %>
+                                                <li><%=endpoints2[edx].toJSON().name%>: <%=endpoints2[edx].toJSON().url%> </li>
+
+                                                <%}%>
+
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td colspan="3" class="hiddenRow">
+                                        <div class="accordion-body <%=privateRegion.toJSON().id%> collapse">
+                                            <div><p>Actions: </p>
+                                                <ul>
+
+
+                                                    <li>
+
+                                                        <button class="btn-mini btn-blue changeStatusPrivate" data-id="<%=privateRegion.toJSON().id%>" data-toggle="modal" data-target="#myModal">Edit Status</button>
+                                                    </li>
+                                                </ul>
+
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <%
+                                }
+                                %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="services">
+
+                <div class="table_actions clearfix">
+
+                    <a href="" class="btn btn-mini btn-blue btn_action  addServiceType " data-i18n="Add Service Type" data-toggle="modal" data-target="#myModal">Add Service Type</a>
+                </div>
+                    <div class="table_container">
+
+                        <table id="table_head3" class="table table-bordered table-striped table-header table-head ">
+                            <thead>
+                            <tr>
+                                <td>Service ID</td>
+                                <td>Service Type</td>
+                                <td>Actions</td>
+
+                            </tr>
+                            </thead>
+                        </table>
+                        <div class="scrollable">
+                            <div class="vp">
+                                <table id="table_entries3" class="table table-without-margins without-borders table-striped table-scrolled ov">
+                                    <tbody>
+                                    <%
+
+                                    for (var idx = 0; idx < services.length; idx++){
+                                    var service = services.at(idx);
+
+                                    %>
+
+                                    <tr id="<%service.toJSON().id%>" >
+                                        <td colspan="1"> <%=service.toJSON().id%>
+                                        </td>
+                                        <td colspan="1">
+                                            <%=service.toJSON().type%>
+                                        </td>
+                                        <td colspan="1">
+                                            <button class="btn-mini btn-blue editService " data-id="<%=service.toJSON().id%>" data-toggle="modal" data-target="#myModal">Edit</button>
+                                            <button class="btn-mini btn-danger deleteService " data-id="<%=service.toJSON().id%>" >Delete</button>
+
+                                        </td>
+                                    </tr>
+
+                                    <%
+                                    }
+                                    %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+</script>

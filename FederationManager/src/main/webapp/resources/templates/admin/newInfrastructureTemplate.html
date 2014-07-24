@@ -1,0 +1,35 @@
+<script id="newInfrastructureTemplate" type="text/html">
+<div id="newInfrastructure">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Infrastructure Details</h4>
+            </div>
+            <div class="modal-body">
+                <label for="infrastructureName">Name:</label>
+                <input type="text" id="infrastructureName"/>
+                <label for="ownerID">Owner ID:</label>
+                <input type="text" id="ownerID"/>
+                <label for="nodeType">Node Type:</label>
+                <select id="nodeType" >
+                    <option value="master" >Master</option>
+                    <option value="slave">Slave</option>
+                </select>
+                <label for="infrastructureCountry">Country:</label>
+                <input type="text" id="infrastructureCountry">
+
+                <label for="infrastructureLatitude">Latitude:</label>
+                <input type="text" id="infrastructureLatitude">
+                <label for="infrastructureLongitude">Longitude:</label>
+                <input type="text" id="infrastructureLongitude">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-blue addInf" data-dismiss="modal">Submit</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+</script>

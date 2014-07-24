@@ -1,0 +1,20 @@
+<script id="addServiceTypeTemplate" type="text/html">
+    <div id="newServiceTypeContainer">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Service Details</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="newServiceType">Service Type:</label>
+                    <input type="text" id="newServiceType" <%if(typeof service != 'undefined'){%> value=<%=service.get('type')%> <%}%>/>
+
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" type="button" class="btn btn-blue <%if(typeof service != 'undefined'){%> patchService <% } else { %> submitServiceType <%}%>" >Submit</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</script>

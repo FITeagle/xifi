@@ -1,0 +1,29 @@
+<script id="sideBarTemplate" type="text/html">
+<!--
+Description: Side Bar
+src: templates/root/sideBar.html
+-->
+<div class="menuv">
+    <div id="sideBarTitle" class="sideBarTitle" data-i18n="<%= title %>">
+        <%=title%>
+    </div>
+
+  
+</div>
+<ul class="main_nav">
+    <% for (var index in models) {
+    var model = models[index];
+    %>
+    <li>
+        <% if (model.get('type') !== 'title') { %>
+        <!--<span class="icon <%=model.get('iconcss')%> <% if(model.get('active')) { %>active<% } %>"/>!--><a href="<%= model.get('url') %>" <% if(model.get('active')) { %> class="active <%=model.get('css')%> <%=model.get('iconcss')%>" <% } else { %>class="<%=model.get('css')%> <%=model.get('iconcss')%>" <% } %> tabindex='1' data-i18n="<%= model.get('name') %>"><%= model.get('name') %></a>
+        <% } else { %>
+        <%= model.get('name') %>
+        <% } %>
+
+    </li>
+    <% } %>
+</ul>
+</section>
+
+</script>
