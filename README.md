@@ -22,4 +22,7 @@ mvn clean install
 	* log into WildFly AS at localhost:9990 with username "admin" and password "admin"
 	* under the Profile tab add a new datasource and follow the steps listed in the pictures below
 	![alt text](doc/addDatasource1.png "Add datasource")
+	![alt text](doc/addDatasource2.png "Add datasource jndi")
+	* edit the username and password regarding your MySql server installation
+	![alt text](doc/addDatasource3.png "Add datasource connection")
 
