@@ -21,18 +21,17 @@ Run WildFly container
 
 MySql Setup
 ---
-
-	* log into WildFly AS at localhost:9990 with username "admin" and password "admin"
-	* under the Profile tab add a new datasource and follow the steps listed in the pictures below
-	![alt text](doc/addDatasource1.png "Add datasource")
-	![alt text](doc/addDatasource2.png "Add datasource jndi")
-	* edit the username and password regarding your MySql server installation
-	![alt text](doc/addDatasource3.png "Add datasource connection")
-	* the registered datasource might have to be enabled
+* log into WildFly AS at localhost:9990 with username "admin" and password "admin"
+* under the Profile tab add a new datasource and follow the steps listed in the pictures below
+![alt text](doc/addDatasource1.png "Add datasource")
+![alt text](doc/addDatasource2.png "Add datasource jndi")
+* edit the username and password regarding your MySql server installation
+![alt text](doc/addDatasource3.png "Add datasource connection")
+* the registered datasource might have to be enabled
 	
 Preferences
 ---
-	The Federation Manager application defines a set of preferences for configuration. 
+The Federation Manager application defines a set of preferences for configuration. 
 	* tokenLocation - url to fetch oauth access token, example https://account.lab.fi-ware.org/oauth2/token
 	* redirectURI   - callback url registered at IDM
 	* userLocation  - url to fetch user based on access token
