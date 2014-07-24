@@ -40,3 +40,7 @@ The Federation Manager application defines a set of preferences for configuratio
 * errorPage - defines the URL for an error page
 * clientSecret - client secret assigned by IDM
 * authLocation - url of oauth entry point
+
+Start the application
+---
+copy the build war-file (step "compile") to `server/wildfly/standalone/deployments/`
