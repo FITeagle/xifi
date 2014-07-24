@@ -1,3 +1,0 @@
-{
-	"type":"something else“
-}
