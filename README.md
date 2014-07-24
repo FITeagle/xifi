@@ -6,9 +6,8 @@ Delivery Mechanism: XIFI Federation
 Installation Guide
 ------------------
 * Compile
-``` cd FederationManager
-mvn clean install
-```
+```cd FederationManager
+mvn clean install```
 
 * Run WildFly container
  cd ../../server/wildfly
