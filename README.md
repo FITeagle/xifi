@@ -32,11 +32,11 @@ MySql Setup
 Preferences
 ---
 The Federation Manager application defines a set of preferences for configuration. 
-	* tokenLocation - url to fetch oauth access token, example https://account.lab.fi-ware.org/oauth2/token
-	* redirectURI   - callback url registered at IDM
-	* userLocation  - url to fetch user based on access token
-	* clientId     -  client id assigned by IDM
-	* environment -  defines the role of the user to use, either "dev_member", "dev_admin", "dev_fm" for development environment or "production" if to be used with IDM authentication/authorization
-	* errorPage - defines the URL for an error page
-	* clientSecret - client secret assigend by IDM
-	* authLocation - url of oauth entry point
+* tokenLocation - url to fetch oauth access token, example https://account.lab.fi-ware.org/oauth2/token
+* redirectURI   - callback url registered at IDM
+* userLocation  - url to fetch user based on access token
+* clientId     -  client id assigned by IDM
+* environment -  defines the role of the user to use, either "dev_member", "dev_admin", "dev_fm" for development environment or "production" if to be used with IDM authentication/authorization
+* errorPage - defines the URL for an error page
+* clientSecret - client secret assigend by IDM
+* authLocation - url of oauth entry point
