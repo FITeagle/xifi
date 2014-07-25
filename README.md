@@ -43,9 +43,10 @@ The Federation Manager application defines a set of preferences for configuratio
 
 Start the application
 ---
-copy the build war-file (step "compile") to `server/wildfly/standalone/deployments/`
+copy the build war-file (step "compile") to `server/wildfly/standalone/deployments/`.
 By default, the application runs in development mode, this means no outh identificaton is required. 
-To change the role of the user connected, edit the preferences. 
+To change the role of the user connected, edit the preference `environment`. 
  * dev_member: A user which is a member of an organization, without rights to edit or create new infrastructures.
  * dev_admin: A user which is given the admin role by its organization. Can create, edit or delete infrastructures.
  * dev_fm: A user which belongs to the FederationManager organization. Can see, edit and delete all infrastructures registered.
+ * production: This value enables oauth identification, other preferences must be adjusted as well. See the documentation of the [IDM](https://github.com/ging/fi-ware-idm/wiki/Using-the-FI-LAB-instance "KeyRock IDM")for details
