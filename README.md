@@ -31,7 +31,7 @@ MySql Setup
 	
 Preferences
 ---
-The Federation Manager application defines a set of preferences for configuration. 
+The Federation Manager application defines a set of preferences for configuration. The location of the preferences file depends on the OS used.
 * tokenLocation - url to fetch oauth access token, example https://account.lab.fi-ware.org/oauth2/token
 * redirectURI   - callback url registered at IDM
 * userLocation  - url to fetch user based on access token
@@ -44,3 +44,8 @@ The Federation Manager application defines a set of preferences for configuratio
 Start the application
 ---
 copy the build war-file (step "compile") to `server/wildfly/standalone/deployments/`
+By default, the application runs in development mode, this means no outh identificaton is required. 
+To change the role of the user connected, edit the preferences. 
+ * dev_member: A user which is a member of an organization, without rights to edit or create new infrastructures.
+ * dev_admin: A user which is given the admin role by its organization. Can create, edit or delete infrastructures.
+ * dev_fm: A user which belongs to the FederationManager organization. Can see, edit and delete all infrastructures registered.
