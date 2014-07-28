@@ -106,9 +106,9 @@ public class RegionResource {
 
 	@GET
 	@Produces("application/hal+json")
-	public Response getAllRegions(@Context UriInfo uriInfo,@QueryParam("country") String country,@QueryParam("status") String status, @QueryParam("public") String publicNode, @QueryParam("adminUsername") String adminUsername, @QueryParam("page")String page, @QueryParam("per_page") String per_page) {
+	public Response getAllRegions(@Context UriInfo uriInfo,@QueryParam("country") String country,@QueryParam("status") String status, @QueryParam("public") String publicNode, @QueryParam("organizationName") String organizationName, @QueryParam("page")String page, @QueryParam("per_page") String per_page) {
 		LOGGER.log(Level.INFO, "Received find All Regions");
-		List<Region> regions	 = regionDao.findRegions(country, status, publicNode, adminUsername);
+		List<Region> regions	 = regionDao.findRegions(country, status, publicNode, organizationName);
 		
 		for(Region r: regions){
 			r.addLinksWithId(uriInfo.getAbsolutePath().toString());

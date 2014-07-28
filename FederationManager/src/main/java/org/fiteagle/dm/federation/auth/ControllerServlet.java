@@ -36,37 +36,7 @@ public class ControllerServlet extends HttpServlet {
             }
         }else{
 
-            User u = new User();
-            u.setId("1");
-            u.setActorId("1");
-            u.setDisplayName("developer");
-            u.setEmail("d@de.de");
-            u.setNickName("dev");
-            Organization o  = new Organization();
-            o.setDisplayName("TUB");
-            o.setActorId(1);
-            o.setId(1);
-            List<Organization> oList = new ArrayList<>();
-            oList.add(o);
-            u.setOrganizations(oList);
-            Role r = new Role();
-            r.setId("1");
-
-            if(config.getUserRole().equals("dev_member")){
-                r.setName("IOMember");
-
-            }
-            if(config.getUserRole().equals("dev_admin")){
-                r.setName("IOAdmin");
-            }
-            if(config.getUserRole().equals("dev_fm")){
-                r.setName("Provider");
-            }
-
-            List<Role> rList = new ArrayList<>();
-            rList.add(r);
-            o.setRoles(rList);
-            store.addUser("developer",u);
+            store.addDeveloper();
             req.getRequestDispatcher("/index.html").forward(req, resp);
 
         }

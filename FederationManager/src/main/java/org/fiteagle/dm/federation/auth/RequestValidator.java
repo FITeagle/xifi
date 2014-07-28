@@ -112,7 +112,7 @@ public class RequestValidator {
                             long regionId = endpoint.getRegionId();
                             Region region = regionDAO.findRegion(regionId);
                             if(region != null){
-                                if(region.getAdminUsername().equals(organization.getDisplayName()))
+                                if(region.getOrganizationName().equals(organization.getDisplayName()))
                                     returnVal=true;
                             }
                         }
@@ -126,7 +126,7 @@ public class RequestValidator {
                         Region region = regionDAO.findRegion(Long.valueOf(regionId));
 
                         if (region != null) {
-                            if(region.getAdminUsername().equals(organization.getDisplayName()))
+                            if(region.getOrganizationName().equals(organization.getDisplayName()))
                                 return true;
                         } else {
                             return false;

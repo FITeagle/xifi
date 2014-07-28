@@ -10,7 +10,7 @@
                     <label class="modal-label" for="regionName">Name:</label>
                     <input type="text" id="regionName" value="<%=model.toJSON().id%>"/>
                     <label class="modal-label"for="regionOwner">Owner ID:</label>
-                    <input type="text" id="regionOwner" value="<%=model.toJSON().adminUsername%>"/>
+                    <input type="text" id="regionOwner" value="<%=model.toJSON().organizationName%>"/>
                     <% if(admin) { %>
                     <label class="modal-label" for="nodeType">Node Type:</label>
                     <select id="nodeType" >

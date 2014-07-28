@@ -37,7 +37,7 @@ public class Region extends LinkableEntity implements Serializable{
 	String country;
 	String latitude;
 	String longitude;
-	String adminUsername;
+	String organizationName;
 	@OneToOne(cascade=CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	RegionStatus regionStatus;
@@ -146,13 +146,13 @@ public class Region extends LinkableEntity implements Serializable{
 	}
 
 
-	public String getAdminUsername() {
-		return adminUsername;
+	public String getOrganizationName() {
+		return organizationName;
 	}
 
 
-	public void setAdminUsername(String adminUsername) {
-		this.adminUsername = adminUsername;
+	public void setOrganizationName(String organizationName) {
+		this.organizationName = organizationName;
 	}
 
 

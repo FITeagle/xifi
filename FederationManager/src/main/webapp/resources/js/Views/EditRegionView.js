@@ -38,7 +38,7 @@ define(["backbone"], function (Backbone) {
             this.model.set("country", $("#regionCountry").val());
             this.model.set("latitude", $("#regionLat").val());
             this.model.set("longitude", $("#regionLong").val());
-            this.model.set("adminUsername", $("#regionOwner").val());
+            this.model.set("organizationName", $("#regionOwner").val());
             this.model.set("nodeType", $("#nodeType").val());
 
             this.model.patch();

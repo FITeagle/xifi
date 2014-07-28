@@ -82,7 +82,7 @@ DROP TABLE IF EXISTS `Region`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Region` (
   `ID` bigint(20) NOT NULL,
-  `adminUsername` varchar(255) DEFAULT NULL,
+  `organizationName` varchar(255) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
   `latitude` varchar(255) DEFAULT NULL,

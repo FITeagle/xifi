@@ -275,7 +275,7 @@ public class RequestValidatorTest {
     private void addRegionDAO() {
         RegionDAO regionDAO = EasyMock.createMock(RegionDAO.class);
         Region region = new Region();
-        region.setAdminUsername("BerlinNode");
+        region.setOrganizationName("BerlinNode");
         EasyMock.expect(regionDAO.findRegion(1)).andReturn(region).anyTimes();
         EasyMock.expect(regionDAO.findRegion(2)).andReturn(null).anyTimes();
         EasyMock.replay(regionDAO);

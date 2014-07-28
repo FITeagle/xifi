@@ -40,7 +40,7 @@ define(["backbone", "region"], function (Backbone, Region) {
             region.set("country", $("#infrastructureCountry").val());
             region.set("latitude", $("#infrastructureLatitude").val());
             region.set("longitude", $("#infrastructureLongitude").val());
-            region.set("adminUsername", $("#ownerID").val());
+            region.set("organizationName", $("#ownerID").val());
             region.set("nodeType", $("#nodeType").val());
             region.set("public", "true");
             region.post();

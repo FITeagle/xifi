@@ -45,7 +45,7 @@ define(["backbone", "member", "region", "contact"], function (Backbone, Member, 
         startSurvey: function (e) {
 
             this.region = new Region();
-            this.region.set('adminUsername', this.loginModel.get('user').get('organizations').at(0).get("displayName"));
+            this.region.set('organizationName', this.loginModel.get('user').get('organizations').at(0).get("displayName"));
             $(this.el).empty();
             $(this.el).html(this._legalComplianceTemplate);
             this.delegateEvents({

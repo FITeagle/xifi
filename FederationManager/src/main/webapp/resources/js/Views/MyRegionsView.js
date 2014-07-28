@@ -22,7 +22,7 @@ define(["backbone", "services", "endpoints", "regions", "newEndpointTemplateView
             var org_id = this.loginModel.get("user").get("organizations").at(0).get("displayName");
             console.log("get regions for" + org_id);
             var regions = new Regions();
-            regions.fetch({async: false, data: {"adminUsername": org_id}});
+            regions.fetch({async: false, data: {"organizationName": org_id}});
             regions.each(function (region) {
                 region.contacts.fetch({async: false});
                 region.regionStatus.fetch({async: false});

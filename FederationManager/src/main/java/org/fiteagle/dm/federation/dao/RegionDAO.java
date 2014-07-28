@@ -61,7 +61,7 @@ public class RegionDAO {
 
 	}
 
-	public List<Region> findRegions(String country, String status, String publicNode, String adminUsername) {
+	public List<Region> findRegions(String country, String status, String publicNode, String organizationName) {
 		EasyCriteria< Region> easyCriteria =  EasyCriteriaFactory.createQueryCriteria(em, Region.class);
 		if(country != null)
 			easyCriteria.andEquals("country", country);
@@ -73,8 +73,8 @@ public class RegionDAO {
 			easyCriteria.innerJoin("regionStatus");
 			easyCriteria.andEquals("regionStatus.status", status);
 		}
-		if(adminUsername != null)
-			easyCriteria.andEquals("adminUsername", adminUsername);
+		if(organizationName != null)
+			easyCriteria.andEquals("organizationName", organizationName);
 		
 		List<Region> regions = easyCriteria.getResultList();
 		return regions;
@@ -83,8 +83,8 @@ public class RegionDAO {
 	public Region updateRegion(Region r) {
 		Region former = em.find(Region.class, r.getUUID());
 		if (former != null) {
-			if (r.getAdminUsername() != null) {
-				former.setAdminUsername(r.getAdminUsername());
+			if (r.getOrganizationName() != null) {
+				former.setOrganizationName(r.getOrganizationName());
 			}
 			if (r.getCountry() != null) {
 				former.setCountry(r.getCountry());
